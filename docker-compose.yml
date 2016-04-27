@@ -1,0 +1,13 @@
+myicecast:
+   image: alastairhm/docker-icecast
+   volumes:
+      - /home/alastair/Music/:/opt/music
+   ports:
+      - "8000:8000"
+      - "6600:6600"
+frontend:
+   image: alastairhm/docker-ympd:alpine
+   links:
+      - myicecast:mpdhost 
+   ports:
+      - "8080:8080"
